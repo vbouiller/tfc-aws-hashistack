@@ -136,7 +136,7 @@ acl = {
     initial_management               = "${consul_init_token}"
     agent                            = "${consul_agent_token}"
     default                          = "${consul_dns_token}"
-    my_servicetoken                  = "${consul_service_token}"
+#    my_servicetoken                  = "${consul_service_token}"
   }
 }
 
