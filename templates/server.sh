@@ -111,6 +111,7 @@ sudo chown -R consul:consul /opt/consul/
 sudo tee /etc/consul.d/consul.hcl > /dev/null <<EOF
 data_dir         = "/opt/consul/"
 server           = true
+log_level        = "DEBUG"
 license_path     = "/opt/consul/license.hclic"
 bootstrap_expect = ${server_count}
 advertise_addr   = "$(private_ip)"
@@ -128,16 +129,16 @@ ui_config = {
 
 encrypt = "${consul_gossip_key}"
 
-acl = {
-  enabled = true
-  default_policy = "deny"
-  enable_token_persistence = true
-  tokens {
-    initial_management               = "${consul_init_token}"
-    agent                            = "${consul_agent_token}"
-    default                          = "${consul_dns_token}"
-  }
-}
+# acl = {
+#   enabled = true
+#   default_policy = "deny"
+#   enable_token_persistence = true
+#   tokens {
+#     initial_management               = "${consul_init_token}"
+#     agent                            = "${consul_agent_token}"
+#     default                          = "${consul_dns_token}"
+#   }
+# }
 
 auto_encrypt {
   allow_tls = true
